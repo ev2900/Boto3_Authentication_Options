@@ -3,7 +3,7 @@ import boto3
 credentials = boto3.Session().get_credentials()
 
 # Optional - use credentials from a specific profile
-# credentials = boto3.Session(profile_name='profile-2').get_credentials()
+# credentials = boto3.Session(profile_name='<profile-name>').get_credentials() # ex. credentials = boto3.Session(profile_name='profile-2').get_credentials()
 
 # print(credentials.access_key)
 # print(credentials.secret_key)

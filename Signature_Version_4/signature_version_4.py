@@ -1,11 +1,38 @@
+from opensearchpy import OpenSearch, RequestsHttpConnection, AWSV4SignerAuth # pip install opensearch-py
 import boto3
-import requests
-from requests_aws4auth import AWS4Auth
 
-credentials = boto3.Session().get_credentials()
+host = 'xmpe2i0b2vtisb1ie8if.us-east-1.aoss.amazonaws.com'
+region = 'us-east-1'
 
-awsauth = AWS4Auth(credentials.access_key, credentials.secret_key, 'us-east-1', 's3')
+credentials = boto3.Session(profile_name='profile-2').get_credentials()
 
-response = requests.get("http://s3-us-east-1.amazonaws.com", auth=awsauth)
+auth = AWSV4SignerAuth(credentials, region)
 
-#print(response.text)
+index_name = 'movies'
+
+client = OpenSearch(
+    hosts = [{'host': host, 'port': 443}],
+    http_auth = auth,
+    use_ssl = True,
+    verify_certs = True,
+    connection_class = RequestsHttpConnection
+)
+
+q = 'miller'
+
+query = {
+  'size': 5,
+  'query': {
+    'multi_match': {
+      'query': q,
+      'fields': ['title^2', 'director']
+    }
+  }
+}
+
+response = client.search(
+    body = query,
+    index = index_name
+)
+
+print(response)
