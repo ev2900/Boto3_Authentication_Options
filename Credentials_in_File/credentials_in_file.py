@@ -10,7 +10,7 @@ credentials = boto3.Session().get_credentials()
 
 session = boto3.Session(
 	aws_access_key_id=credentials.access_key,
-    aws_secret_access_key=credentials.secret_key
+	aws_secret_access_key=credentials.secret_key
 )
 
 # Example S3 client to check if the session auth is working
