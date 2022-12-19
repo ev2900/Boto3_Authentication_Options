@@ -5,4 +5,5 @@ session = boto3.Session(
     aws_secret_access_key="<secret_access_key>"
 )
 
+# Example S3 client to check if the session auth is working
 client = boto3.client('s3')
