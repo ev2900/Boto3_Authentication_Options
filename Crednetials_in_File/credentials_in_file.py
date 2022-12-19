@@ -2,11 +2,11 @@ import boto3
 
 credentials = boto3.Session().get_credentials()
 
-# access_key = credentials.access_key
-# secret_key = credentials.secret_key
+# Optional - use credentials from a specific profile
+# credentials = boto3.Session(profile_name='profile-2').get_credentials()
 
-# print(access_key)
-# print(secret_key)
+# print(credentials.access_key)
+# print(credentials.secret_key)
 
 session = boto3.Session(
 	aws_access_key_id=credentials.access_key,
