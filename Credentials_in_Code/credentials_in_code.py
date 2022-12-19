@@ -6,4 +6,4 @@ session = boto3.Session(
 )
 
 # Example S3 client to check if the session auth is working
-client = boto3.client('s3')
+s3 = session.client('s3')
