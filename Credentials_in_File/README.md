@@ -5,3 +5,8 @@ An AWS user's access key id and secret value can configure a boto3 session **wit
 
 [Install the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) if you have not already.
 
+2. Configure the AWS CLI
+
+Run ```aws configure``` and follow the promopts if you have not already
+
+3. 
